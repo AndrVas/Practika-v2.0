@@ -11,6 +11,13 @@ namespace SqlServerTestApp
 {
     public partial class Form11 : Form
     {
+        private bool открытаФормаКлиенты = false;
+        private bool открытаФормаОбслуживание= false;
+        private bool открытаФормаПроцентСкидок = false;
+        private bool открытаФормаПоселение = false;
+        private bool открытаФормаНомера = false;
+        private bool открытаФормаРазвлечение = false;
+        private bool открытаФормаСотрудники = false;
         public Form11()
         {
             InitializeComponent();
@@ -21,11 +28,15 @@ namespace SqlServerTestApp
                 comboBox5.KeyPress += (sender, e) => e.Handled = true;
                 comboBox6.KeyPress += (sender, e) => e.Handled = true;
                 comboBox7.KeyPress += (sender, e) => e.Handled = true;
+                comboBox8.KeyPress += (sender, e) => e.Handled = true;
+                comboBox9.KeyPress += (sender, e) => e.Handled = true;
+                comboBox10.KeyPress += (sender, e) => e.Handled = true;
 
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            открытаФормаКлиенты = true;
             string query = @"select [ID клиента], [Фамилия], [Имя], [Отчество] from [dbo].[Клиенты]";
             var list = DBConnectionService.SendQueryToSqlServer(query);
             FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID клиента", "Фамилия", "Имя", "Отчество");
@@ -37,6 +48,11 @@ namespace SqlServerTestApp
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if(!открытаФормаКлиенты)
+            {
+                MessageBox.Show("Не та таблица!");
+                return;
+            }
             string tb1 = null;
             string tb2 = null;
             string tb3 = null;
@@ -62,25 +78,33 @@ namespace SqlServerTestApp
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            string query = @"select [ID номера], [Город], [Название], [Страны] from [dbo].[Номера]";
+            открытаФормаНомера = true;
+            string query = @"select [ID номера], [Город], [Номер], [Название], [Страны] from [dbo].[Номера]";
             var list = DBConnectionService.SendQueryToSqlServer(query);
-            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID номера", "Город", "Название", "Страны");
+            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID номера", "Город", "Номер", "Название", "Страны");
             foreach (var row in list)
             {
-                dataGridView1.Rows.Add(row[0], row[1], row[2], row[3]);
+                dataGridView1.Rows.Add(row[0], row[1], row[2], row[3], row[4]);
             }
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
+            if (!открытаФормаНомера)
+            {
+                MessageBox.Show("Не та таблица!");
+                return;
+            }
             string tb4 = null;
             string tb5 = null;
             string tb6 = null;
+            string cb20 = null;
             try
             {
                 tb4 = textBox4.Text;
                 tb5 = textBox5.Text;
                 tb6 = textBox6.Text;
+                cb20 = comboBox9.Text;
             }
             catch (Exception exc)
             {
@@ -88,7 +112,7 @@ namespace SqlServerTestApp
                 return;
             }
             int n = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            string query = "update dbo.Номера SET Город='" + tb4 + "',Название='" + tb5 + "',Страны='" + tb6 + "' where [ID номера]='" + n + "'";
+            string query = "update dbo.Номера SET Город='" + tb4 + "',Номер='" + cb20 + "',Название='" + tb5 + "',Страны='" + tb6 + "' where [ID номера]='" + n + "'";
             int? result = DBConnectionService.SendCommandToSqlServer(query);
             if (result != null && result > 0)
             {
@@ -105,23 +129,31 @@ namespace SqlServerTestApp
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            string query = @"select [ID Обслуживания], [Виды обслуживания], [Дата обслуживания] from [dbo].[Обслуживание]";
+            открытаФормаОбслуживание = true;
+            string query = @"select [ID Обслуживания], [Код номера], [Виды обслуживания], [Дата обслуживания] from [dbo].[Обслуживание]";
             var list = DBConnectionService.SendQueryToSqlServer(query);
-            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID Обслуживания", "Виды обслуживания", "Дата обслуживания");
+            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID Обслуживания", "Код номера", "Виды обслуживания", "Дата обслуживания");
             foreach (var row in list)
             {
-                dataGridView1.Rows.Add(row[0], row[1], row[2]);
+                dataGridView1.Rows.Add(row[0], row[1], row[2], row[3]);
             }
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
+            if (!открытаФормаОбслуживание)
+            {
+                MessageBox.Show("Не та таблица!");
+                return;
+            }
             string cb7 = null;
+            string cb18 = null;
             DateTime tb8;
             
             try
             {
                 cb7 = comboBox6.Text;
+                cb18 = comboBox8.Text;
                 tb8 = dateTimePicker1.Value;
                 
             }
@@ -131,7 +163,7 @@ namespace SqlServerTestApp
                 return;
             }
             int n = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            string query = "update dbo.Обслуживание SET [Виды обслуживания]='" + cb7 + "',[Дата обслуживания]='" + tb8 + "' where [ID Обслуживания]='" + n + "'";
+            string query = "update dbo.Обслуживание SET [Виды обслуживания]='" + cb7 + "',[Код номера]='" + cb18 + "',[Дата обслуживания]='" + tb8 + "' where [ID Обслуживания]='" + n + "'";
             int? result = DBConnectionService.SendCommandToSqlServer(query);
             if (result != null && result > 0)
             {
@@ -151,6 +183,7 @@ namespace SqlServerTestApp
 
         private void Button8_Click(object sender, EventArgs e)
         {
+            открытаФормаПоселение = true;
             string query = @"select  [ID поселения], [Дата поселения], [Дата освобождения],[Код клиента] from [dbo].[Поселение]";
             var list = DBConnectionService.SendQueryToSqlServer(query);
             FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID поселения", "Дата поселения", "Дата освобождения","Код клиента");
@@ -162,6 +195,11 @@ namespace SqlServerTestApp
 
         private void Button9_Click(object sender, EventArgs e)
         {
+            if (!открытаФормаПоселение)
+            {
+                MessageBox.Show("Не та таблица!");
+                return;
+            }
             DateTime tb9;
             DateTime tb10;
             string cb8 = null;
@@ -189,7 +227,7 @@ namespace SqlServerTestApp
 
         private void Button10_Click(object sender, EventArgs e)
         {
-
+            открытаФормаПроцентСкидок = true;
             string query = @"select [ID скидки], [Скидки], [Тип скидки], [Дата] from [dbo].[Процент скидок]";
             var list = DBConnectionService.SendQueryToSqlServer(query);
             FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID Скидки", "Скидки", "Тип кидки", "Дата");
@@ -217,6 +255,11 @@ namespace SqlServerTestApp
 
         private void Button11_Click(object sender, EventArgs e)
         {
+            if (!открытаФормаПроцентСкидок)
+            {
+                MessageBox.Show("Не та таблица!");
+                return;
+            }
             string cb1 = null;
             string cb2 = null;
             DateTime tb11;
@@ -242,25 +285,33 @@ namespace SqlServerTestApp
 
         private void Button12_Click(object sender, EventArgs e)
         {
-            string query = @"select [ID вида развлечения], [Виды развлечений], [Город], [Название гостиницы] from [dbo].[Развлечения]";
+            открытаФормаРазвлечение = true;
+            string query = @"select [ID вида развлечения], [Виды развлечений], [Вместимость людей], [Город], [Название гостиницы] from [dbo].[Развлечения]";
             var list = DBConnectionService.SendQueryToSqlServer(query);
-            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID вида развлечения", "Виды развлечения", "Город", "Название гостиницы");
+            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID вида развлечения", "Виды развлечения", "Вместимость людей", "Город", "Название гостиницы");
             foreach (var row in list)
             {
-                dataGridView1.Rows.Add(row[0], row[1], row[2], row[3]);
+                dataGridView1.Rows.Add(row[0], row[1], row[2], row[3], row[4]);
             }
         }
 
         private void Button13_Click(object sender, EventArgs e)
         {
+            if (!открытаФормаРазвлечение)
+            {
+                MessageBox.Show("Не та таблица!");
+                return;
+            }
             string cb3 = null;
             string tb13 = null;
             string tb14 = null;
+            string cb19 = null;
             try
             {
                 cb3 = comboBox3.Text;
                 tb13 = textBox8.Text;
                 tb14 = textBox9.Text;
+                cb19 = comboBox10.Text;
             }
             catch (Exception exc)
             {
@@ -268,7 +319,7 @@ namespace SqlServerTestApp
                 return;
             }
             int n = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            string query = "update dbo.Развлечения SET [Виды развлечений]='" + cb3 + "',Город='" + tb13 + "',[Название гостиницы]='" + tb14 + "' where [ID вида развлечения]='" + n + "'";
+            string query = "update dbo.Развлечения SET [Виды развлечений]='" + cb3 + "',[Вместимость людей]='" + cb19 + "',Город='" + tb13 + "',[Название гостиницы]='" + tb14 + "' where [ID вида развлечения]='" + n + "'";
             int? result = DBConnectionService.SendCommandToSqlServer(query);
             if (result != null && result > 0)
             {
@@ -286,6 +337,7 @@ namespace SqlServerTestApp
 
         private void Button15_Click(object sender, EventArgs e)
         {
+            открытаФормаСотрудники = true;
             string query = @"select [ID сотрудника], [Должность], [Фамилия], [Имя], [Отчество] from [dbo].[Сотрудники]";
             var list = DBConnectionService.SendQueryToSqlServer(query);
             FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "ID сотрудника", "Должность", "Фамилия", "Имя", "Отчество");
@@ -313,6 +365,11 @@ namespace SqlServerTestApp
 
         private void Button14_Click(object sender, EventArgs e)
         {
+            if (!открытаФормаСотрудники)
+            {
+                MessageBox.Show("Не та таблица!");
+                return;
+            }
             string cb4 = null;
             string cb5 = null;
             string tb15 = null;
@@ -459,5 +516,30 @@ namespace SqlServerTestApp
             comboBox7.Items.Clear();
             comboBox7.Items.AddRange(list);
         }
+
+        private void ComboBox8_DropDown(object sender, EventArgs e)
+        {
+            string query = "select [Код номера], [Код номера] from [Обслуживание]";
+            var list = DBConnectionService.SendQueryToSqlServer(query)?.Select(row => new IdentityItem(row[0], row[1])).ToArray();
+            comboBox8.Items.Clear();
+            comboBox8.Items.AddRange(list);
+        }
+
+        private void ComboBox10_DropDown(object sender, EventArgs e)
+        {
+            string query = "select [Вместимость людей], [Вместимость людей] from [Развлечения]";
+            var list = DBConnectionService.SendQueryToSqlServer(query)?.Select(row => new IdentityItem(row[0], row[1])).ToArray();
+            comboBox10.Items.Clear();
+            comboBox10.Items.AddRange(list);
+        }
+
+        private void ComboBox9_DropDown(object sender, EventArgs e)
+        {
+            string query = "select [Номер], [Номер] from [Номера]";
+            var list = DBConnectionService.SendQueryToSqlServer(query)?.Select(row => new IdentityItem(row[0], row[1])).ToArray();
+            comboBox9.Items.Clear();
+            comboBox9.Items.AddRange(list);
+        }
     }
+    
 }

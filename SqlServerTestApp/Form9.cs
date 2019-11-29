@@ -25,15 +25,15 @@ namespace SqlServerTestApp
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string query = @"Select Название 'Название гостиницы'
+            string query = @"Select Название, Город
                               From Номера
                                  where Цена = (Select MIN(Цена) From Номера) and Вместимость = '1';";
             var list = DBConnectionService.SendQueryToSqlServer(query);
-            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название");
+            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название", "Город");
 
             foreach (var row in list)
             {
-                dataGridView1.Rows.Add(row[0]);
+                dataGridView1.Rows.Add(row[0], row[1]);
             }
 
 
@@ -46,15 +46,15 @@ namespace SqlServerTestApp
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            string query = @"Select Название 'Название гостиницы'
+            string query = @"Select Название, Город
                               From [Номера]
                                  Where [Вместимость] = '30' and [Город] = 'Москва';";
             var list = DBConnectionService.SendQueryToSqlServer(query);
-            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название");
+            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название", "Город");
 
             foreach (var row in list)
             {
-                dataGridView1.Rows.Add(row[0]);
+                dataGridView1.Rows.Add(row[0], row[1]);
             }
         }
 
@@ -88,29 +88,29 @@ namespace SqlServerTestApp
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            string query = @" select Название, Страны
+            string query = @" select Название,Цена, Страны
                                 From Номера
                                     Where Цена = (select MAX(Цена) from Номера) and Страны = 'Россия';";
             var list = DBConnectionService.SendQueryToSqlServer(query);
-            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название", "Страны");
+            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название","Цена", "Страны");
 
             foreach (var row in list)
             {
-                dataGridView1.Rows.Add(row[0], row[1]);
+                dataGridView1.Rows.Add(row[0], row[1], row[2]);
             }
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            string query = @" select Название, Страны
+            string query = @" select Название,Цена, Страны
                                 From Номера
                                      Where Цена = (select MIN(Цена) from Номера) and Страны = 'Россия';  ";
             var list = DBConnectionService.SendQueryToSqlServer(query);
-            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название", "Страны");
+            FormExtentions.ClearAndAddColumnsInDataGridView(dataGridView1, "Название","Цена", "Страны");
 
             foreach (var row in list)
             {
-                dataGridView1.Rows.Add(row[0], row[1]);
+                dataGridView1.Rows.Add(row[0], row[1], row[2]);
             }
         }
 

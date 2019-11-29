@@ -71,7 +71,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 3);
+            this.comboBox1.Location = new System.Drawing.Point(3, 44);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
@@ -79,7 +79,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 30);
+            this.button1.Location = new System.Drawing.Point(3, 71);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 2;
@@ -89,7 +89,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(3, 59);
+            this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 35);
             this.button2.TabIndex = 3;
@@ -121,7 +121,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(3, 30);
+            this.button4.Location = new System.Drawing.Point(3, 73);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(121, 23);
             this.button4.TabIndex = 12;
@@ -131,7 +131,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(3, 59);
+            this.button5.Location = new System.Drawing.Point(3, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(121, 35);
             this.button5.TabIndex = 13;
@@ -142,7 +142,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(3, 3);
+            this.comboBox2.Location = new System.Drawing.Point(3, 46);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 14;
@@ -151,7 +151,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(3, 3);
+            this.comboBox3.Location = new System.Drawing.Point(2, 47);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 15;
@@ -159,7 +159,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(3, 30);
+            this.button6.Location = new System.Drawing.Point(3, 74);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(121, 23);
             this.button6.TabIndex = 16;
@@ -169,7 +169,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(3, 59);
+            this.button7.Location = new System.Drawing.Point(2, 5);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(121, 35);
             this.button7.TabIndex = 17;
@@ -180,7 +180,7 @@
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(3, 3);
+            this.comboBox4.Location = new System.Drawing.Point(3, 44);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 18;
@@ -188,7 +188,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(3, 30);
+            this.button8.Location = new System.Drawing.Point(3, 71);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(121, 23);
             this.button8.TabIndex = 19;
@@ -198,7 +198,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(3, 59);
+            this.button9.Location = new System.Drawing.Point(3, 3);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(121, 35);
             this.button9.TabIndex = 20;
@@ -209,7 +209,7 @@
             // comboBox5
             // 
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(3, 3);
+            this.comboBox5.Location = new System.Drawing.Point(3, 46);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(121, 21);
             this.comboBox5.TabIndex = 21;
@@ -217,7 +217,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(3, 30);
+            this.button10.Location = new System.Drawing.Point(3, 73);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(121, 23);
             this.button10.TabIndex = 22;
@@ -227,7 +227,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(3, 59);
+            this.button11.Location = new System.Drawing.Point(6, 3);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(121, 35);
             this.button11.TabIndex = 23;
@@ -238,7 +238,7 @@
             // comboBox6
             // 
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(3, 3);
+            this.comboBox6.Location = new System.Drawing.Point(3, 44);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(121, 21);
             this.comboBox6.TabIndex = 24;
@@ -246,7 +246,7 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(3, 30);
+            this.button12.Location = new System.Drawing.Point(3, 71);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(121, 23);
             this.button12.TabIndex = 25;
@@ -256,7 +256,7 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(3, 59);
+            this.button13.Location = new System.Drawing.Point(3, 3);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(121, 35);
             this.button13.TabIndex = 26;
@@ -267,7 +267,7 @@
             // comboBox7
             // 
             this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(3, 3);
+            this.comboBox7.Location = new System.Drawing.Point(6, 44);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(121, 21);
             this.comboBox7.TabIndex = 27;
@@ -275,7 +275,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(3, 30);
+            this.button14.Location = new System.Drawing.Point(6, 71);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(121, 23);
             this.button14.TabIndex = 28;
@@ -285,7 +285,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(3, 59);
+            this.button15.Location = new System.Drawing.Point(3, 3);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(121, 35);
             this.button15.TabIndex = 29;
@@ -307,9 +307,9 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flowLayoutPanel1.Controls.Add(this.button9);
             this.flowLayoutPanel1.Controls.Add(this.comboBox4);
             this.flowLayoutPanel1.Controls.Add(this.button8);
-            this.flowLayoutPanel1.Controls.Add(this.button9);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(165, 17);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(129, 98);
